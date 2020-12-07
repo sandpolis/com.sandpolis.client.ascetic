@@ -14,10 +14,12 @@ import com.bmuschko.gradle.docker.tasks.container.*
 import com.bmuschko.gradle.docker.tasks.image.*
 
 plugins {
-	id("com.bmuschko.docker-remote-api") version "6.6.0"
-	id("eclipse")
 	id("java-library")
-	id("com.sandpolis.gradle.soi")
+	id("sandpolis-java")
+	id("sandpolis-module")
+	id("sandpolis-publish")
+	id("sandpolis-soi")
+	id("com.bmuschko.docker-remote-api") version "6.6.0"
 }
 
 dependencies {
@@ -38,13 +40,6 @@ dependencies {
 	implementation("io.netty:netty-common:4.1.48.Final")
 	implementation("io.netty:netty-handler:4.1.48.Final")
 	implementation("io.netty:netty-transport:4.1.48.Final")
-}
-
-eclipse {
-	project {
-		name = project.name
-		comment = project.name
-	}
 }
 
 val imageSyncBuildContext by tasks.creating(Sync::class) {
