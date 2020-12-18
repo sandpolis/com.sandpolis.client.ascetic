@@ -31,7 +31,7 @@ jobs:
     name: Push image to Docker Hub
     needs: test
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/master'
     steps:
     - name: Setup Java
       uses: actions/setup-java@v1
