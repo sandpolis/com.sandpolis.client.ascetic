@@ -1,52 +1,28 @@
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    tags:
+    - '*'
 
 jobs:
-  test:
-    name: "Test on ${{ matrix.os }}"
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ ubuntu-latest, macos-latest, windows-latest ]
-    steps:
-    - name: Setup Java
-      uses: actions/setup-java@v1
-      with:
-        java-version: 15
-    - name: Clone root repository
-      uses: actions/checkout@v2
-      with:
-        repository: sandpolis/sandpolis
-    - name: Checkout submodules
-      run: |
-        git submodule update --init --remote --merge com.sandpolis.client.ascetic
-    - name: Run tests
-      run: |
-        ./gradlew :com.sandpolis.client.ascetic:test
-
   push:
-    name: Push image to Docker Hub
-    needs: test
+    name: Push to DockerHub
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
-    - name: Setup Java
+    - name: Initialize Java
       uses: actions/setup-java@v1
       with:
         java-version: 15
-    - name: Clone root repository
+    - name: Checkout root repository
       uses: actions/checkout@v2
       with:
         repository: sandpolis/sandpolis
     - name: Checkout submodules
       run: |
         git submodule update --init --remote --merge com.sandpolis.client.ascetic
-    - name: Set up QEMU
+    - name: Initialize QEMU
       uses: docker/setup-qemu-action@v1
-    - name: Set up Docker Buildx
+    - name: Initialize buildx
       uses: docker/setup-buildx-action@v1
     - name: DockerHub login
       uses: docker/login-action@v1
@@ -58,6 +34,6 @@ jobs:
       with:
         context: .
         file: com.sandpolis.client.ascetic/Dockerfile
-        platforms: linux/amd64
+        platforms: linux/amd64,linux/arm/v7,linux/arm64/v8
         push: true
         tags: sandpolis/terminal-client:latest

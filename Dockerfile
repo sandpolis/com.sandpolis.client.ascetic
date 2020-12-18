@@ -22,9 +22,9 @@ COPY --from=build /app /app/lib
 # Enable JVM debugging
 #ENV JAVA_TOOL_OPTIONS "-agentlib:jdwp=transport=dt_socket,address=0.0.0.0:7000,server=y,suspend=y"
 
-ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-Djava.security.egd=file:/dev/urandom", "-cp", "/app/lib/*", "com.sandpolis.client.ascetic.Main"]
+ENTRYPOINT ["java", "-cp", "/app/lib/*", "com.sandpolis.client.ascetic.Main"]
 
 FROM base AS production
 COPY --from=build /app /app/lib
 
-ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-Djava.security.egd=file:/dev/urandom", "-cp", "/app/lib/*", "com.sandpolis.client.ascetic.Main"]
+ENTRYPOINT ["java", "-cp", "/app/lib/*", "com.sandpolis.client.ascetic.Main"]
