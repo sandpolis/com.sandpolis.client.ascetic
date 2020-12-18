@@ -44,6 +44,10 @@ jobs:
     - name: Checkout submodules
       run: |
         git submodule update --init --remote --merge com.sandpolis.client.ascetic
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
     - name: DockerHub login
       uses: docker/login-action@v1
       with:
