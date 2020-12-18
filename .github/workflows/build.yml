@@ -58,6 +58,6 @@ jobs:
       with:
         context: .
         file: com.sandpolis.client.ascetic/Dockerfile
-        platforms: linux/amd64,linux/arm64,linux/386
+        platforms: linux/amd64
         push: true
         tags: sandpolis/terminal-client:latest
