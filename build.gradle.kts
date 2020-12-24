@@ -54,22 +54,7 @@ val imageBuild by tasks.creating(DockerBuildImage::class) {
 	images.add("sandpolis/client/ascetic:latest")
 }
 
-val createTestContainer by tasks.creating(DockerCreateContainer::class) {
+task<Exec>("imageTest") {
 	dependsOn(imageBuild)
-	targetImageId(imageBuild.getImageId())
-	hostConfig.autoRemove.set(true)
-}
-
-val startTestContainer by tasks.creating(DockerStartContainer::class) {
-	dependsOn(createTestContainer)
-	targetContainerId(createTestContainer.getContainerId())
-}
-
-val stopTestContainer by tasks.creating(DockerStopContainer::class) {
-	targetContainerId(createTestContainer.getContainerId())
-}
-
-tasks.create("imageTest") {
-	dependsOn(startTestContainer)
-	finalizedBy(stopTestContainer)
+	commandLine("docker", "run", "--rm", "sandpolis/client/ascetic:latest")
 }
