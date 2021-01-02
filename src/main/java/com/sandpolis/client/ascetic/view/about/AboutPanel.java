@@ -36,19 +36,20 @@ public class AboutPanel extends Panel {
 		Label lbl_version = new Label("Sandpolis Version").addStyle(BOLD);
 		addComponent(lbl_version);
 
-		Label val_version = new Label(Core.SO_BUILD.getVersion());
+		Label val_version = new Label(Core.SO_BUILD.getProperty("instance.version"));
 		addComponent(val_version);
 
 		Label lbl_timestamp = new Label("Build Timestamp").addStyle(BOLD);
 		addComponent(lbl_timestamp);
 
-		Label val_timestamp = new Label(new Date(Core.SO_BUILD.getTime()).toString());
+		Label val_timestamp = new Label(
+				new Date(Long.parseLong(Core.SO_BUILD.getProperty("build.timestamp"))).toString());
 		addComponent(val_timestamp);
 
 		Label lbl_platform = new Label("Build Platform").addStyle(BOLD);
 		addComponent(lbl_platform);
 
-		Label val_platform = new Label(Core.SO_BUILD.getPlatform());
+		Label val_platform = new Label(Core.SO_BUILD.getProperty("build.platform"));
 		addComponent(val_platform);
 
 		Label lbl_java_version = new Label("Java Version").addStyle(BOLD);

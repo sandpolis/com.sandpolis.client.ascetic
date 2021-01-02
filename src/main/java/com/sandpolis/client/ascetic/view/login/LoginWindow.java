@@ -56,7 +56,7 @@ public class LoginWindow extends BasicWindow {
 	public LoginWindow() {
 		init();
 
-		if (Core.SO_BUILD.getDevelopment()) {
+		if (Boolean.parseBoolean(Core.SO_BUILD.getProperty("build.development"))) {
 			fld_username.setText("admin");
 			fld_password.setText("password");
 			fld_address.setText("127.0.0.1");
