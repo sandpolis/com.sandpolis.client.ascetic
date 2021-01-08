@@ -25,4 +25,4 @@ jobs:
         git submodule update --init --remote --merge com.sandpolis.client.ascetic
     - name: Execute build
       run: |
-        gradle --no-daemon :com.sandpolis.client.ascetic:build
+        gradle --no-daemon :com.sandpolis.client.ascetic:build -x javadoc
