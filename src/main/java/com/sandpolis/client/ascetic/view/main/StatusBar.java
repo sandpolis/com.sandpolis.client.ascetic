@@ -22,6 +22,7 @@ import com.googlecode.lanterna.gui2.LinearLayout;
 import com.googlecode.lanterna.gui2.Panel;
 import com.sandpolis.core.foundation.Config;
 import com.sandpolis.core.foundation.util.TextUtil;
+import com.sandpolis.core.instance.state.ConnectionOid;
 
 public class StatusBar extends Panel {
 
@@ -74,8 +75,10 @@ public class StatusBar extends Panel {
 
 				while (!Thread.currentThread().isInterrupted()) {
 
-					lbl_upload.setText("[UP: " + TextUtil.formatByteCount(sock.getWriteThroughput()) + "/s]");
-					lbl_download.setText("[DN: " + TextUtil.formatByteCount(sock.getReadThroughput()) + "/s]");
+					lbl_upload.setText(
+							"[UP: " + TextUtil.formatByteCount(sock.get(ConnectionOid.WRITE_THROUGHPUT)) + "/s]");
+					lbl_download.setText(
+							"[DN: " + TextUtil.formatByteCount(sock.get(ConnectionOid.READ_THROUGHPUT)) + "/s]");
 					try {
 						Thread.sleep(timeout);
 					} catch (InterruptedException e) {

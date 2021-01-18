@@ -13,6 +13,7 @@ import static com.sandpolis.core.net.connection.ConnectionStore.ConnectionStore;
 import static com.sandpolis.core.net.network.NetworkStore.NetworkStore;
 
 import com.googlecode.lanterna.gui2.table.Table;
+import com.sandpolis.core.instance.state.ConnectionOid;
 
 public class HostList extends Table<String> {
 
@@ -24,7 +25,7 @@ public class HostList extends Table<String> {
 		super("UUID", "Hostname", "IP Address", "Platform");
 
 		NetworkStore.getPreferredServer().ifPresentOrElse(cvid -> {
-			serverUuid = ConnectionStore.getByCvid(cvid).get().getRemoteUuid();
+			serverUuid = ConnectionStore.getByCvid(cvid).get().get(ConnectionOid.REMOTE_UUID);
 
 			// Attach the local collection
 //			STCmd.async().sync(collection, InstanceOid().profile);
