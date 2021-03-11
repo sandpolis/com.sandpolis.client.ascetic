@@ -24,8 +24,6 @@ dependencies {
 	testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.1")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.1")
 
-	implementation(project(":module:com.sandpolis.core.client"))
-
 	// https://github.com/qos-ch/logback
 	implementation("ch.qos.logback:logback-core:1.3.0-alpha5")
 	implementation("ch.qos.logback:logback-classic:1.3.0-alpha5")
@@ -38,6 +36,12 @@ dependencies {
 	implementation("io.netty:netty-common:4.1.48.Final")
 	implementation("io.netty:netty-handler:4.1.48.Final")
 	implementation("io.netty:netty-transport:4.1.48.Final")
+
+	if (project.getParent() == null) {
+		implementation("com.sandpolis:core.client:0.1.0")
+	} else {
+		implementation(project(":module:com.sandpolis.core.client"))
+	}
 }
 
 task<Sync>("assembleLib") {
