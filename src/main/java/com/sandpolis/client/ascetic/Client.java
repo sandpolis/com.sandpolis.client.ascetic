@@ -33,7 +33,7 @@ import com.googlecode.lanterna.gui2.WindowBasedTextGUI;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.sandpolis.client.ascetic.view.login.LoginWindow;
-import com.sandpolis.core.foundation.Config;
+import com.sandpolis.core.instance.config.CfgInstance;
 import com.sandpolis.core.instance.Core;
 import com.sandpolis.core.instance.Environment;
 import com.sandpolis.core.instance.MainDispatch;
@@ -67,10 +67,10 @@ public final class Client {
 	@InitializationTask(name = "Load runtime environment", fatal = true)
 	private static final Task loadEnvironment = new Task(outcome -> {
 
-		Config.PATH_CFG.register();
-		Config.PATH_LOG.register();
-		Config.PATH_LIB.register();
-		Config.PATH_PLUGIN.register();
+		CfgInstance.PATH_CFG.register();
+		CfgInstance.PATH_LOG.register();
+		CfgInstance.PATH_LIB.register();
+		CfgInstance.PATH_PLUGIN.register();
 
 		Environment.CFG.requireReadable();
 		Environment.LIB.requireReadable();

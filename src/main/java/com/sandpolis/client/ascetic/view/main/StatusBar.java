@@ -20,7 +20,7 @@ import com.googlecode.lanterna.gui2.Direction;
 import com.googlecode.lanterna.gui2.Label;
 import com.googlecode.lanterna.gui2.LinearLayout;
 import com.googlecode.lanterna.gui2.Panel;
-import com.sandpolis.core.foundation.Config;
+import com.sandpolis.core.net.config.CfgNet;
 import com.sandpolis.core.foundation.util.TextUtil;
 import com.sandpolis.core.instance.state.ConnectionOid;
 
@@ -71,7 +71,7 @@ public class StatusBar extends Panel {
 
 		ConnectionStore.values().stream().findAny().ifPresent(sock -> {
 			updater = new Thread(() -> {
-				int timeout = Config.TRAFFIC_INTERVAL.value().get();
+				int timeout = CfgNet.TRAFFIC_INTERVAL.value().get();
 
 				while (!Thread.currentThread().isInterrupted()) {
 

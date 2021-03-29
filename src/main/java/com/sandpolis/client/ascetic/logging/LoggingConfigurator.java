@@ -9,8 +9,8 @@
 //============================================================================//
 package com.sandpolis.client.ascetic.logging;
 
-import com.sandpolis.core.foundation.logging.DefaultLogbackConfigurator;
 import com.sandpolis.client.ascetic.view.log.LogPanelAppender;
+import com.sandpolis.core.instance.logging.DefaultLogbackConfigurator;
 
 import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.LoggerContext;
@@ -43,8 +43,6 @@ public class LoggingConfigurator extends DefaultLogbackConfigurator {
 		Logger root = lc.getLogger(Logger.ROOT_LOGGER_NAME);
 		root.addAppender(appender);
 
-		LEVELS.entrySet().forEach(entry -> {
-			lc.getLogger(entry.getKey()).setLevel(entry.getValue());
-		});
+		configureLevels(lc);
 	}
 }

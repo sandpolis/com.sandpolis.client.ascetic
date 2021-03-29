@@ -60,5 +60,5 @@ task<DockerBuildImage>("buildImage") {
 
 task<Exec>("runImage") {
 	dependsOn(tasks.named("buildImage"))
-	commandLine("docker", "run", "--rm", "sandpolis/client/ascetic:latest")
+	commandLine("docker", "run", "--rm", "-e", "S7S_DEVELOPMENT_MODE=true", "-e", "S7S_LOG_LEVELS=io.netty=WARN,java.util.prefs=OFF,com.sandpolis=TRACE", "sandpolis/client/ascetic:latest")
 }
