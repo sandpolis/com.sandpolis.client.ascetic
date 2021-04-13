@@ -75,10 +75,10 @@ public class StatusBar extends Panel {
 
 				while (!Thread.currentThread().isInterrupted()) {
 
-					lbl_upload.setText(
-							"[UP: " + TextUtil.formatByteCount(sock.get(ConnectionOid.WRITE_THROUGHPUT)) + "/s]");
-					lbl_download.setText(
-							"[DN: " + TextUtil.formatByteCount(sock.get(ConnectionOid.READ_THROUGHPUT)) + "/s]");
+					lbl_upload.setText("[UP: "
+							+ TextUtil.formatByteCount(sock.get(ConnectionOid.WRITE_THROUGHPUT).asLong()) + "/s]");
+					lbl_download.setText("[DN: "
+							+ TextUtil.formatByteCount(sock.get(ConnectionOid.READ_THROUGHPUT).asLong()) + "/s]");
 					try {
 						Thread.sleep(timeout);
 					} catch (InterruptedException e) {

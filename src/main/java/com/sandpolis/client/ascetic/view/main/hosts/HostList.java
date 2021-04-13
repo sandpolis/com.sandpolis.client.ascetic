@@ -25,7 +25,7 @@ public class HostList extends Table<String> {
 		super("UUID", "Hostname", "IP Address", "Platform");
 
 		NetworkStore.getPreferredServer().ifPresentOrElse(cvid -> {
-			serverUuid = ConnectionStore.getByCvid(cvid).get().get(ConnectionOid.REMOTE_UUID);
+			serverUuid = ConnectionStore.getByCvid(cvid).get().get(ConnectionOid.REMOTE_UUID).asString();
 
 			// Attach the local collection
 //			STCmd.async().sync(collection, InstanceOid().profile);
