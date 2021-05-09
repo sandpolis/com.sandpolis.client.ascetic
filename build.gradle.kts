@@ -31,12 +31,6 @@ dependencies {
 	// https://github.com/mabe02/lanterna
 	implementation("com.googlecode.lanterna:lanterna:3.1.0")
 
-	// https://github.com/netty/netty
-	implementation("io.netty:netty-codec:4.1.48.Final")
-	implementation("io.netty:netty-common:4.1.48.Final")
-	implementation("io.netty:netty-handler:4.1.48.Final")
-	implementation("io.netty:netty-transport:4.1.48.Final")
-
 	if (project.getParent() == null) {
 		implementation("com.sandpolis:core.client:0.1.0")
 	} else {

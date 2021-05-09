@@ -97,14 +97,15 @@ public final class Client {
 		});
 
 		NetworkStore.init(config -> {
+			config.collection = Oid.of("/network_connection").get();
 		});
 
 		ConnectionStore.init(config -> {
-			config.collection = STStore.get(InstanceOid().profile(Core.UUID).connection);
+			config.collection = Oid.of("/connection").get();
 		});
 
 		PluginStore.init(config -> {
-			config.collection = STStore.get(InstanceOid().profile(Core.UUID).plugin);
+			config.collection = Oid.of("/profile//plugin", Core.UUID).get();
 		});
 
 		WindowStore.init(config -> {
