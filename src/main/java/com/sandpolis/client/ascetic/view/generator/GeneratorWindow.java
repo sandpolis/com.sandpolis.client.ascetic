@@ -36,7 +36,6 @@ import com.googlecode.lanterna.gui2.Window;
 import com.googlecode.lanterna.gui2.dialogs.FileDialogBuilder;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
-import com.sandpolis.client.ascetic.Client;
 import com.sandpolis.client.ascetic.renderer.CustomButtonRenderer;
 import com.sandpolis.core.instance.Group.AgentConfig;
 import com.sandpolis.core.instance.Group.AgentConfig.LoopConfig;
@@ -44,7 +43,7 @@ import com.sandpolis.core.instance.Group.AgentConfig.NetworkTarget;
 
 public class GeneratorWindow extends BasicWindow {
 
-	public static final Logger log = LoggerFactory.getLogger(Client.class);
+	public static final Logger log = LoggerFactory.getLogger(GeneratorWindow.class);
 
 	private TextBox fld_path;
 	private TextBox fld_address;

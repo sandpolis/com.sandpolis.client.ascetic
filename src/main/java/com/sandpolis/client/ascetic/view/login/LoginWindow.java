@@ -35,16 +35,15 @@ import com.googlecode.lanterna.gui2.TextBox;
 import com.googlecode.lanterna.gui2.Window;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
-import com.sandpolis.core.instance.Core;
+import com.sandpolis.core.instance.Entrypoint;
 import com.sandpolis.core.net.connection.ConnectionFuture;
 import com.sandpolis.core.client.cmd.LoginCmd;
-import com.sandpolis.client.ascetic.Client;
 import com.sandpolis.client.ascetic.renderer.CustomButtonRenderer;
 import com.sandpolis.client.ascetic.view.main.MainWindow;
 
 public class LoginWindow extends BasicWindow {
 
-	private static final Logger log = LoggerFactory.getLogger(Client.class);
+	private static final Logger log = LoggerFactory.getLogger(LoginWindow.class);
 
 	private TextBox fld_username;
 	private TextBox fld_password;
@@ -56,7 +55,7 @@ public class LoginWindow extends BasicWindow {
 	public LoginWindow() {
 		init();
 
-		if (Boolean.parseBoolean(Core.SO_BUILD.getProperty("build.development"))) {
+		if (Boolean.parseBoolean(Entrypoint.data().so_build().getProperty("build.development"))) {
 			fld_username.setText("admin");
 			fld_password.setText("password");
 			fld_address.setText("127.0.0.1");

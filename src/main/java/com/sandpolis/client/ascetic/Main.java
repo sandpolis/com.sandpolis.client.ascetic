@@ -9,21 +9,26 @@
 //============================================================================//
 package com.sandpolis.client.ascetic;
 
-import com.sandpolis.core.instance.MainDispatch;
+import com.sandpolis.client.ascetic.init.AsceticLoadUserInterface;
+import com.sandpolis.core.instance.Entrypoint;
 import com.sandpolis.core.instance.Metatypes.InstanceFlavor;
 import com.sandpolis.core.instance.Metatypes.InstanceType;
+import com.sandpolis.core.instance.init.InstanceLoadEnvironment;
 
-/**
- * {@code com.sandpolis.client.ascetic} entry point.
- *
- * @since 5.0.0
- */
-public final class Main {
-	private Main() {
+public final class Main extends Entrypoint {
+
+	private Main(String[] args) {
+		super(Main.class, InstanceType.CLIENT, InstanceFlavor.ASCETIC);
+
+		register(new InstanceLoadEnvironment());
+		//register(new InstanceLoadStores());
+		register(new AsceticLoadUserInterface());
+
+		start("Sandpolis Terminal Client", args);
 	}
 
 	public static void main(String[] args) {
-		MainDispatch.dispatch(Client.class, args, InstanceType.CLIENT, InstanceFlavor.ASCETIC);
+		new Main(args);
 	}
 
 }
