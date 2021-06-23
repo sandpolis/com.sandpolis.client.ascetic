@@ -21,8 +21,8 @@ plugins {
 }
 
 dependencies {
-	testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.1")
-	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.1")
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
 
 	// https://github.com/qos-ch/logback
 	implementation("ch.qos.logback:logback-core:1.3.0-alpha5")
@@ -32,9 +32,9 @@ dependencies {
 	implementation("com.googlecode.lanterna:lanterna:3.1.1")
 
 	if (project.getParent() == null) {
-		implementation("com.sandpolis:core.client:0.1.1")
-		implementation("com.sandpolis:core.net:0.2.0")
-		implementation("com.sandpolis:core.instance:0.2.0")
+		implementation("com.sandpolis:core.client:+")
+		implementation("com.sandpolis:core.net:+")
+		implementation("com.sandpolis:core.instance:+")
 	} else {
 		implementation(project(":module:com.sandpolis.core.client"))
 		implementation(project(":module:com.sandpolis.core.net"))
