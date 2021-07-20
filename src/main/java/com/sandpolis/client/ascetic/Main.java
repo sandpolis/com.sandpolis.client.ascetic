@@ -18,10 +18,10 @@ import com.sandpolis.core.instance.init.InstanceLoadEnvironment;
 public final class Main extends Entrypoint {
 
 	private Main(String[] args) {
-		super(Main.class, InstanceType.CLIENT, InstanceFlavor.ASCETIC);
+		super(Main.class, InstanceType.CLIENT, InstanceFlavor.CLIENT_ASCETIC);
 
 		register(new InstanceLoadEnvironment());
-		//register(new InstanceLoadStores());
+		// register(new InstanceLoadStores());
 		register(new AsceticLoadUserInterface());
 
 		start("Sandpolis Terminal Client", args);
